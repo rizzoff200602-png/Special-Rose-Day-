@@ -1,0 +1,80 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Rose Day, My Love!</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: linear-gradient(to bottom, #ffcccc, #ffe6e6); color: #333; text-align: center; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        button { background: #ff69b4; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 10px; }
+        button:hover { background: #ff1493; }
+        input { padding: 10px; width: 80%; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        .hidden { display: none; }
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="start">
+            <h1>🌹 Happy Rose Day, My Love! 🌹</h1>
+            <p>I've created this little game just for you. Answer three questions to unlock a special surprise. Ready to start?</p>
+            <button onclick="showQuestion(1)">Yes, Let's Go!</button>
+        </div>
+        
+        <div id="q1" class="hidden">
+            <h2>Question 1: What's your favorite color of rose?</h2>
+            <input type="text" id="ans1" placeholder="e.g., Red, Pink, White...">
+            <button onclick="nextQuestion(1)">Submit & Next</button>
+        </div>
+        
+        <div id="q2" class="hidden">
+            <h2>Question 2: How many roses would you like me to give you today?</h2>
+            <input type="number" id="ans2" placeholder="e.g., 10, 100, a million...">
+            <button onclick="nextQuestion(2)">Submit & Next</button>
+        </div>
+        
+        <div id="q3" class="hidden">
+            <h2>Question 3: What's one thing you love most about us?</h2>
+            <input type="text" id="ans3" placeholder="Your sweet answer here...">
+            <button onclick="showNote()">Submit & Reveal Surprise</button>
+        </div>
+        
+        <div id="note" class="hidden">
+            <h2>🌹 A Lovely Note for You 🌹</h2>
+            <p>My dearest Bhumi,</p>
+            <p>You are the most beautiful rose in my garden--vibrant, delicate, and full of love. Thank you for being you. I cherish every moment with you. Happy Rose Day! I love you endlessly.</p>
+            <p>With all my heart,<br>Rishu</p>
+            <img src="https://media.giphy.com/media/3o7TKz9bX9v8Z8Z8Z8/giphy.gif" alt="Teddy giving a rose" style="margin-top: 20px;">
+            <p>(A teddy bear delivering your rose!)</p>
+        </div>
+    </div>
+
+    <script>
+        function showQuestion(num) {
+            document.getElementById('start').classList.add('hidden');
+            document.getElementById('q' + num).classList.remove('hidden');
+        }
+        
+        function nextQuestion(num) {
+            const ans = document.getElementById('ans' + num).value;
+            if (!ans.trim()) {
+                alert('Please answer the question!');
+                return;
+            }
+            document.getElementById('q' + num).classList.add('hidden');
+            showQuestion(num + 1);
+        }
+        
+        function showNote() {
+            const ans = document.getElementById('ans3').value;
+            if (!ans.trim()) {
+                alert('Please answer the question!');
+                return;
+            }
+            document.getElementById('q3').classList.add('hidden');
+            document.getElementById('note').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
